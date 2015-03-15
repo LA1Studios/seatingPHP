@@ -94,7 +94,6 @@
 			$flag=0;
 
 
-			echo "HEY HOW U? ".$studentsub[0][6]." NICE";
 
 			$m=0;
 			$a=0;
@@ -103,7 +102,6 @@
 			for($i=0; $i<count($subfile); $i++)
 			{
 				$mini= $aaa[$m]->rminindex();
-				echo "<br>$mini ";
 
 				for($j=0; $j<count($studentsub[$i]);$j++)
 				{
@@ -137,4 +135,5 @@
 		}
 			$roomdata= "rooms.txt";
 			@roomdetails($roomdata); // NOTICE [errors] HANDLED WITH @ SYMBOL
+      echo "Search Search"
 		?>
