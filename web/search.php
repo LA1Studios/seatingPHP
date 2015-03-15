@@ -145,16 +145,23 @@
               if($searchkey == $seathold[$m][$i][$j][$x])
                 {
                   echo "Found";
-                  flag++;
+                  $flagForSearch++;
                 }
 
             }
+            if($flagForSearch!=0)
+              break;
 
           }
+          if($flagForSearch!=0)
+            break;
 
         }
+        if($flagForSearch!=0)
+          break;
       }
-      if(flag==0)
+
+      if($flagForSearch==0)
         echo "ERROR";
 
 			fclose($rooms);
