@@ -131,7 +131,7 @@
 			$firstc=0;
 
 
-
+      $flagForSearch = 0;
       //SEARCH PART
       $searchkey = $_REQUEST['srno'];
       for($m=0;$singleroom[$m]!=NULL;$m++)
@@ -143,12 +143,25 @@
             for($x=0;$x<$spt;$x++)
             {
               if($searchkey == $seathold[$m][$i][$j][$x])
-                echo "Found";
+                {
+                  echo "Found";
+                  flag++;
+                  break;
+                }
             }
-          }
-        }
-      }
+            if(flag!=0)
+              break;
 
+          }
+          if(flag!=0)
+            break;
+
+        }
+        if(flag!=0)
+          break;
+      }
+      if(flag==0)
+        echo "ERROR";
 
 			fclose($rooms);
 		}
