@@ -146,19 +146,13 @@
                 {
                   echo "Found";
                   flag++;
-                  break;
                 }
+
             }
-            if(flag!=0)
-              break;
 
           }
-          if(flag!=0)
-            break;
 
         }
-        if(flag!=0)
-          break;
       }
       if(flag==0)
         echo "ERROR";
