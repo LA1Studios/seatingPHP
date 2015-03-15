@@ -1,5 +1,5 @@
-  <?php
-    echo "SEARCH SEARCH <br>";
+
+	<?php
 		class SimpleClass
 		{
 			public $rdetsfull= 'COLLEGE';
@@ -73,6 +73,7 @@
 				$singleroom = explode(",", $rdets);
 				for($i=0;$singleroom[$i]!=NULL;$i++)
 				{
+					//echo $singleroom[$i];
 					$aaa[$i]= new SimpleClass();
 					$aaa[$i]->getd($singleroom[$i]);
 					$aaa[$i]->procroomd();
@@ -92,6 +93,9 @@
 			$seathold=array();
 			$flag=0;
 
+
+			echo "HEY HOW U? ".$studentsub[0][6]." NICE";
+
 			$m=0;
 			$a=0;
 			$b=0;
@@ -99,9 +103,10 @@
 			for($i=0; $i<count($subfile); $i++)
 			{
 				$mini= $aaa[$m]->rminindex();
+				echo "<br>$mini ";
+
 				for($j=0; $j<count($studentsub[$i]);$j++)
 				{
-					echo "<br>$m $a $b $mini <br>";
 					$seathold[$m][$a][$b][$mini]= $studentsub[$i][$j];
 					$a++;
 					$aaa[$m]->icpos($mini);
@@ -126,7 +131,10 @@
 
 			$seathold[0][1][1][1]="WOW ";
 			$firstc=0;
-			echo $seathold[0][1][1][1];
-		$roomdata= "rooms.txt";
-    @roomdetails($roomdata); // NOTICE [errors] HANDLED WITH @ SYMBOL
-	?>
+
+
+			fclose($rooms);
+		}
+			$roomdata= "rooms.txt";
+			@roomdetails($roomdata); // NOTICE [errors] HANDLED WITH @ SYMBOL
+		?>
