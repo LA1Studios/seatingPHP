@@ -131,6 +131,25 @@
 			$firstc=0;
 
 
+
+      //SEARCH PART
+      $searchkey = $_REQUEST['srno'];
+      for($m=0;$singleroom[$m]!=NULL;$m++)
+			{
+        for($i=0;$i<$aaa[$m]->rrowd();$i++)
+        {
+          for ($j = 0; $j < $aaa[$m]->rcold(); $j++)
+          {
+            for($x=0;$x<$spt;$x++)
+            {
+              if($searchkey == $seathold[$m][$i][$j][$x])
+                echo "Found";
+            }
+          }
+        }
+      }
+
+
 			fclose($rooms);
 		}
 			$roomdata= "rooms.txt";
