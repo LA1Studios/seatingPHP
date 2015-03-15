@@ -1,4 +1,5 @@
   <?php
+    echo "SEARCH SEARCH\n";
 		class SimpleClass
 		{
 			public $rdetsfull= 'COLLEGE';
@@ -173,7 +174,7 @@
 
 			fclose($rooms);
 		}
-    
+
 		$roomdata= "rooms.txt";
     @roomdetails($roomdata); // NOTICE [errors] HANDLED WITH @ SYMBOL
 	?>
