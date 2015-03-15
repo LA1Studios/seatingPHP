@@ -1,5 +1,5 @@
   <?php
-    echo "SEARCH SEARCH\n";
+    echo "SEARCH SEARCH <br>";
 		class SimpleClass
 		{
 			public $rdetsfull= 'COLLEGE';
@@ -73,33 +73,24 @@
 				$singleroom = explode(",", $rdets);
 				for($i=0;$singleroom[$i]!=NULL;$i++)
 				{
-					//echo $singleroom[$i];
 					$aaa[$i]= new SimpleClass();
 					$aaa[$i]->getd($singleroom[$i]);
 					$aaa[$i]->procroomd();
-					$aaa[$i]->dispd();
-					echo "__________________<br><br>";
 				}
 			}
 			fclose($rooms);
 
 			$studentsub=array();
 			$subfile= array('EC0001.txt','CS0002.txt','ME0003.txt');
-			echo count($subfile)."<br>";
 			for($i=0; $i<count($subfile); $i++)
 			{
-				echo "File : $subfile[$i] <br>";
 				$tempfile[$i] = fopen($subfile[$i], "r") or die("Unable to open file");
 				$sdets=fgets($tempfile[$i]);
-				echo $sdets."<br>";
 				$studentsub[$i]=explode(",",$sdets);
 				fclose($tempfile[$i]);
 			}
 			$seathold=array();
 			$flag=0;
-
-
-			echo "HEY HOW U? ".$studentsub[0][6]." NICE";
 
 			$m=0;
 			$a=0;
@@ -108,12 +99,9 @@
 			for($i=0; $i<count($subfile); $i++)
 			{
 				$mini= $aaa[$m]->rminindex();
-				echo "<br>$mini ";
-
 				for($j=0; $j<count($studentsub[$i]);$j++)
 				{
 					echo "<br>$m $a $b $mini <br>";
-					//$seathold[$m][$a][$b][$mini]="$m$a$b$mini:J=$j <br>";
 					$seathold[$m][$a][$b][$mini]= $studentsub[$i][$j];
 					$a++;
 					$aaa[$m]->icpos($mini);
@@ -138,43 +126,7 @@
 
 			$seathold[0][1][1][1]="WOW ";
 			$firstc=0;
-			//		TABLE AREA
-			echo "<br><br><br><br>";
-			for($m=0;$singleroom[$m]!=NULL;$m++)
-			{
-
-				echo "CLASS : ".$aaa[$m]->rname();
-				echo "<table border=0 width=1200>";
-					for($i=0;$i<$aaa[$m]->rrowd();$i++)
-						{
-						  echo "<tr>";
-						  for ($j = 0; $j < $aaa[$m]->rcold(); $j++)
-						  {
-							echo "<td> $i , $j
-							 <table border=1 width=220>
-								<tr>";
-
-							for($x=0;$x<$spt;$x++)
-								echo "<td width=80 height=30>".$seathold[$m][$i][$j][$x]." </td>";
-
-
-							echo "</tr>
-							 </table>
-
-							 </td>";
-						  }
-						  echo "
-						  </tr>
-						  ";
-						}
-				echo "<tr><td colspan =5>";
-				$aaa[$m]->dispd();
-				echo"</td></tr></table><br><br>";
-			}
-
-			fclose($rooms);
-		}
-
+			echo $seathold[0][1][1][1];
 		$roomdata= "rooms.txt";
     @roomdetails($roomdata); // NOTICE [errors] HANDLED WITH @ SYMBOL
 	?>
