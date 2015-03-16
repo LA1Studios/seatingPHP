@@ -145,17 +145,15 @@
               if($searchkey == $seathold[$m][$i][$j][$x])
                 {
                   echo "Found";
+									echo $aaa[$m]->rname()."-".$aaa[$m]->rrowd()."-".$aaa[$m]->rcold()."-".$i."-".$j."-".$x;
                   $flagForSearch++;
                 }
-
             }
             if($flagForSearch!=0)
               break;
-
           }
           if($flagForSearch!=0)
             break;
-
         }
         if($flagForSearch!=0)
           break;
