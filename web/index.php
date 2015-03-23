@@ -22,7 +22,7 @@
 				echo "Number of Rows = $this->rowd <br>";
 				echo "Number of Columns = $this->cold <br>";
 				echo "Current Pos =".$this->currentpos[0]." ".$this->currentpos[1]." ".$this->currentpos[2]." "."<br>";
-			}	
+			}
 			public function procroomd()
 			{
 				list($this->roomname, $this->rowd, $this->cold) = explode("-",$this->rdetsfull);
@@ -30,7 +30,7 @@
 			}
 			public function rname()
 			{
-				return $this->roomname;	
+				return $this->roomname;
 			}
 			public function rrowd()
 			{
@@ -77,101 +77,93 @@
 					$aaa[$i]= new SimpleClass();
 					$aaa[$i]->getd($singleroom[$i]);
 					$aaa[$i]->procroomd();
-					$aaa[$i]->dispd();
-					echo "__________________<br><br>";
+//					$aaa[$i]->dispd();
+//					echo "__________________<br><br>";
 				}
 			}
 			fclose($rooms);
-			
+
 			$studentsub=array();
-			$subfile= array('EC0001.txt','CS0002.txt','ME0003.txt');
-			echo count($subfile)."<br>";
+			$subfile= array('EC0001.txt','CS0002.txt','ME0003.txt','MA0001.txt','XX0006.txt');
+//			echo count($subfile)."<br>";
 			for($i=0; $i<count($subfile); $i++)
 			{
-				echo "File : $subfile[$i] <br>";
+//				echo "File : $subfile[$i] <br>";
 				$tempfile[$i] = fopen($subfile[$i], "r") or die("Unable to open file");
 				$sdets=fgets($tempfile[$i]);
-				echo $sdets."<br>";
+//				echo $sdets."<br>";
 				$studentsub[$i]=explode(",",$sdets);
 				fclose($tempfile[$i]);
 			}
 			$seathold=array();
 			$flag=0;
-			
-			
-			echo "HEY HOW U? ".$studentsub[0][6]." NICE";
-			
-			$m=0;
-			$a=0;
-			$b=0;
-			
-			for($i=0; $i<count($subfile); $i++)
+
+
+		$m=0;
+$a=0;
+$mini=0;
+for($i=0; $i<count($subfile); $i++)
+{
+
+	$mini= $aaa[$m]->rminindex();
+	while($aaa[$m]->rcpos($mini)>=$aaa[$m]->rmaxpos())
+	{
+		$mini= $aaa[$m]->rminindex();
+		if($aaa[$m]->rcpos($mini)<$aaa[$m]->rmaxpos())
+			break;
+		$m++;
+	}
+
+	$aaa[$m]->dispd();
+		for($j=0; $j<count($studentsub[$i]);$j++)
+		{
+			$a=$aaa[$m]->rcpos($mini);
+			$seathold[$m][$a][$mini]= $studentsub[$i][$j];
+			$a++;
+			$aaa[$m]->icpos($mini);
+			if($a>=$aaa[$m]->rmaxpos())
 			{
-				$mini= $aaa[$m]->rminindex();
-				echo "<br>$mini ";
-				
-				for($j=0; $j<count($studentsub[$i]);$j++)	
-				{
-					echo "<br>$m $a $b $mini <br>";
-					//$seathold[$m][$a][$b][$mini]="$m$a$b$mini:J=$j <br>";
-					$seathold[$m][$a][$b][$mini]= $studentsub[$i][$j];
-					$a++;
-					$aaa[$m]->icpos($mini);
-					if($a>=$aaa[$m]->rrowd())
-					{
-						$a=0;
-						$b++;
-					}	
-					if($b>=$aaa[$m]->rcold())
-					{
-						$m++;
-						$a=0;
-						$b=0;
-					}
-				}
-				$m=0;
 				$a=0;
-				$b=0;
-				
+				$m++;
 			}
-			
-			
-			$seathold[0][1][1][1]="WOW ";
-			$firstc=0;
+		}
+
+	$m=0;
+	$a=0;
+	$mini=0;
+}
+
+
 			//		TABLE AREA
 			echo "<br><br><br><br>";
-			for($m=0;$singleroom[$m]!=NULL;$m++)
+			for($m=0;$m<count($aaa);$m++)
 			{
-				
-				echo "CLASS : ".$aaa[$m]->rname();
-				echo "<table border=0 width=1200>";	
-					for($i=0;$i<$aaa[$m]->rrowd();$i++)
-						{
-						  echo "<tr>";
-						  for ($j = 0; $j < $aaa[$m]->rcold(); $j++)
-						  {
-							echo "<td> $i , $j 
-							 <table border=1 width=220>
-								<tr>";
-							
-							for($x=0;$x<$spt;$x++)
-								echo "<td width=80 height=30>".$seathold[$m][$i][$j][$x]." </td>";
-							
-							
-							echo "</tr>
-							 </table>
-							 
-							 </td>";
-						  }
-						  echo "
-						  </tr>
-						  ";
-						}
-				echo "<tr><td colspan =5>";
-				$aaa[$m]->dispd();
-				echo"</td></tr></table><br><br>";
+				$LOC=0;
+				echo "<center>CLASS :". $aaa[$m]->rname()."<br>";
+				echo "<table border=0 width = 1200>";
+				for($i=0; $i<$aaa[$m]->rrowd(); $i++)
+				{
+
+					echo "<tr>";
+					for($j=0; $j <$aaa[$m]->rcold(); $j++)
+					{
+						echo "<td>";
+						$LOC=$j*$aaa[$m]->rrowd()+$i;
+
+						echo "<table border=1 width=220> <tr>";
+						for($x=0; $x<$spt ;$x++)
+							echo "<td width=80 height = 30> ".$seathold[$m][$LOC][$x]." <br></td>";
+
+						echo "</tr></table>";
+
+						echo "</td>";
+					}
+
+					echo "</tr>";
+				}
+				echo "</table><br><br></center>";
 			}
-		
+
 			fclose($rooms);
 		}
 	?>
