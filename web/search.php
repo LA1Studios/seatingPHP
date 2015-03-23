@@ -1,5 +1,4 @@
-
-	<?php
+<?php
 		echo "Hi";
 		class SimpleClass
 		{
@@ -127,36 +126,11 @@ $mini=0;
 }
 
 
-      $flagForSearch = 0;
-      //SEARCH PART
-      $searchkey = $_REQUEST['srno'];
-      for($m=0;$singleroom[$m]!=NULL;$m++)
-	
-          for ($j = 0; $j < $aaa[$m]->rmaxpos(); $j++)
-          {
-            for($x=0;$x<$spt;$x++)
-            {
-              if($searchkey == $seathold[$m][$j][$x])
-                {
-                  echo "Found";
-									echo $aaa[$m]->rname()."-".$aaa[$m]->rrowd()."-".$aaa[$m]->rcold()."-".$i."-".$j."-".$x;
-                  $flagForSearch++;
-                }
-            }
-            if($flagForSearch!=0)
-              break;
-          }
-          if($flagForSearch!=0)
-            break;
-       
-      }
+  
 
-      if($flagForSearch==0)
-        echo "ERROR";
-
-			fclose($rooms);
-		}
+fclose($rooms);
+}
 			$roomdata= "rooms.txt";
 			@roomdetails($roomdata); // NOTICE [errors] HANDLED WITH @ SYMBOL
-      echo "Search Search"
+			    echo "Search Search"
 		?>
