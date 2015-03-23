@@ -1,5 +1,6 @@
 
 	<?php
+		echo "Hi";
 		class SimpleClass
 		{
 			public $rdetsfull= 'COLLEGE';
