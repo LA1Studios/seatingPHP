@@ -77,21 +77,16 @@
 					$aaa[$i]= new SimpleClass();
 					$aaa[$i]->getd($singleroom[$i]);
 					$aaa[$i]->procroomd();
-//					$aaa[$i]->dispd();
-//					echo "__________________<br><br>";
 				}
 			}
 			fclose($rooms);
 
 			$studentsub=array();
 			$subfile= array('EC0001.txt','CS0002.txt','ME0003.txt','MA0001.txt','XX0006.txt');
-//			echo count($subfile)."<br>";
 			for($i=0; $i<count($subfile); $i++)
 			{
-//				echo "File : $subfile[$i] <br>";
 				$tempfile[$i] = fopen($subfile[$i], "r") or die("Unable to open file");
 				$sdets=fgets($tempfile[$i]);
-//				echo $sdets."<br>";
 				$studentsub[$i]=explode(",",$sdets);
 				fclose($tempfile[$i]);
 			}
@@ -114,7 +109,6 @@ for($i=0; $i<count($subfile); $i++)
 		$m++;
 	}
 
-	$aaa[$m]->dispd();
 		for($j=0; $j<count($studentsub[$i]);$j++)
 		{
 			$a=$aaa[$m]->rcpos($mini);
