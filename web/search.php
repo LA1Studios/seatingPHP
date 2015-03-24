@@ -92,65 +92,57 @@
 			}
 			$seathold=array();
 			$flag=0;
-
-
-
 			$m=0;
 			$a=0;
-			$b=0;
-
+			$mini=0;
 			for($i=0; $i<count($subfile); $i++)
 			{
-				$mini= $aaa[$m]->rminindex();
 
-				for($j=0; $j<count($studentsub[$i]);$j++)
+				$mini= $aaa[$m]->rminindex();
+				while($aaa[$m]->rcpos($mini)>=$aaa[$m]->rmaxpos())
 				{
-					$seathold[$m][$a][$b][$mini]= $studentsub[$i][$j];
-					$a++;
-					$aaa[$m]->icpos($mini);
-					if($a>=$aaa[$m]->rrowd())
-					{
-						$a=0;
-						$b++;
-					}
-					if($b>=$aaa[$m]->rcold())
-					{
-						$m++;
-						$a=0;
-						$b=0;
-					}
+					$mini= $aaa[$m]->rminindex();
+					if($aaa[$m]->rcpos($mini)<$aaa[$m]->rmaxpos())
+						break;
+					$m++;
 				}
+
+					for($j=0; $j<count($studentsub[$i]);$j++)
+					{
+						$a=$aaa[$m]->rcpos($mini);
+						$seathold[$m][$a][$mini]= $studentsub[$i][$j];
+						$a++;
+						$aaa[$m]->icpos($mini);
+						if($a>=$aaa[$m]->rmaxpos())
+						{
+							$a=0;
+							$m++;
+						}
+					}
 				$m=0;
 				$a=0;
-				$b=0;
-
+				$mini=0;
 			}
-
-
-			$seathold[0][1][1][1]="WOW ";
-			$firstc=0;
-
 
       $flagForSearch = 0;
       //SEARCH PART
       $searchkey = $_REQUEST['srno'];
       for($m=0;$singleroom[$m]!=NULL;$m++)
 			{
-        for($i=0;$i<$aaa[$m]->rrowd();$i++)
+        for($i=0;$i<$aaa[$m]->rmaxpos();$i++)
         {
-          for ($j = 0; $j < $aaa[$m]->rcold(); $j++)
-          {
+
             for($x=0;$x<$spt;$x++)
             {
-              if($searchkey == $seathold[$m][$i][$j][$x])
+              if($searchkey == $seathold[$m][$i][$x])
                 {
                   echo "Found";
 									echo $aaa[$m]->rname()."-".$aaa[$m]->rrowd()."-".$aaa[$m]->rcold()."-".$i."-".$j."-".$x;
                   $flagForSearch++;
                 }
+							if($flagForSearch!=0)
+			            break;
             }
-            if($flagForSearch!=0)
-              break;
           }
           if($flagForSearch!=0)
             break;
