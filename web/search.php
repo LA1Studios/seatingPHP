@@ -1,5 +1,5 @@
-
-	<?php
+<?php
+		echo "Hi";
 		class SimpleClass
 		{
 			public $rdetsfull= 'COLLEGE';
@@ -82,7 +82,7 @@
 			fclose($rooms);
 
 			$studentsub=array();
-			$subfile= array('EC0001.txt','CS0002.txt','ME0003.txt');
+			$subfile= array('EC0001.txt','CS0002.txt','ME0003.txt','MA0001.txt','XX0006.txt');
 			for($i=0; $i<count($subfile); $i++)
 			{
 				$tempfile[$i] = fopen($subfile[$i], "r") or die("Unable to open file");
@@ -92,71 +92,45 @@
 			}
 			$seathold=array();
 			$flag=0;
-			$m=0;
-			$a=0;
-			$mini=0;
-			for($i=0; $i<count($subfile); $i++)
-			{
 
-				$mini= $aaa[$m]->rminindex();
-				while($aaa[$m]->rcpos($mini)>=$aaa[$m]->rmaxpos())
-				{
-					$mini= $aaa[$m]->rminindex();
-					if($aaa[$m]->rcpos($mini)<$aaa[$m]->rmaxpos())
-						break;
-					$m++;
-				}
 
-					for($j=0; $j<count($studentsub[$i]);$j++)
-					{
-						$a=$aaa[$m]->rcpos($mini);
-						$seathold[$m][$a][$mini]= $studentsub[$i][$j];
-						$a++;
-						$aaa[$m]->icpos($mini);
-						if($a>=$aaa[$m]->rmaxpos())
-						{
-							$a=0;
-							$m++;
-						}
-					}
-				$m=0;
-				$a=0;
-				$mini=0;
-			}
 
-      $flagForSearch = 0;
-      //SEARCH PART
-      $searchkey = $_REQUEST['srno'];
-      for($m=0;$singleroom[$m]!=NULL;$m++)
-			{
-        for($i=0;$i<$aaa[$m]->rmaxpos();$i++)
-        {
+	$m=0;
+$a=0;
+$mini=0;
+for($i=0; $i<count($subfile); $i++)
+{
+$mini= $aaa[$m]->rminindex();
+while($aaa[$m]->rcpos($mini)>=$aaa[$m]->rmaxpos())
+{
+$mini= $aaa[$m]->rminindex();
+if($aaa[$m]->rcpos($mini)<$aaa[$m]->rmaxpos())
+break;
+$m++;
+}
+for($j=0; $j<count($studentsub[$i]);$j++)
+{
+$a=$aaa[$m]->rcpos($mini);
+$seathold[$m][$a][$mini]= $studentsub[$i][$j];
+$a++;
+$aaa[$m]->icpos($mini);
+if($a>=$aaa[$m]->rmaxpos())
+{
+$a=0;
+$m++;
+}
+}
+$m=0;
+$a=0;
+$mini=0;
+}
 
-            for($x=0;$x<$spt;$x++)
-            {
-              if($searchkey == $seathold[$m][$i][$x])
-                {
-                  echo "Found";
-									echo $aaa[$m]->rname()."-".$aaa[$m]->rrowd()."-".$aaa[$m]->rcold()."-".$i."-".$j."-".$x;
-                  $flagForSearch++;
-                }
-							if($flagForSearch!=0)
-			            break;
-            }
-          }
-          if($flagForSearch!=0)
-            break;
-        }
-        if($flagForSearch!=0)
-          break;
-      }
 
-      if($flagForSearch==0)
-        echo "ERROR";
+  
 
-			fclose($rooms);
-		}
+fclose($rooms);
+}
 			$roomdata= "rooms.txt";
 			@roomdetails($roomdata); // NOTICE [errors] HANDLED WITH @ SYMBOL
-      echo "Search Search"
+			    echo "Search Search"
 		?>
