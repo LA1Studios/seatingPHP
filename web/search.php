@@ -125,8 +125,28 @@ $a=0;
 $mini=0;
 }
 
+$flagForSearch = 0;
+      //SEARCH PART
+      $searchkey = $_REQUEST['srno'];
+      for($m=0;$singleroom[$m]!=NULL;$m++)
+			{
+				for($i=0;$i<$aaa[$m]->rmaxpos();$i++)
+				{
+					for($x=0;$x<$spt;$x++)
+            {
+							if($searchkey == $seathold[$m][$i][$x])
+                {
+                  echo "Found";
+									echo $aaa[$m]->rname()."-".$aaa[$m]->rrowd()."-".$aaa[$m]->rcold()."-".$i."-".$j."-".$x;
+                  $flagForSearch++;
+                }
+								if($flagForSearch!=0)
+			            break;
+						}
 
-  
+				}
+			}
+
 
 fclose($rooms);
 }
