@@ -150,6 +150,40 @@ $flagForSearch = 0;
 				echo "NOT FOUND";
 
 
+
+
+				
+				//		TABLE AREA
+				echo "<br><br><br><br>";
+				for($m=0;$m<count($aaa);$m++)
+				{
+					$LOC=0;
+					echo "<center>CLASS :". $aaa[$m]->rname()."<br>";
+					echo "<table border=0 width = 1200>";
+					for($i=0; $i<$aaa[$m]->rrowd(); $i++)
+					{
+
+						echo "<tr>";
+						for($j=0; $j <$aaa[$m]->rcold(); $j++)
+						{
+							echo "<td>";
+							$LOC=$j*$aaa[$m]->rrowd()+$i;
+
+							echo "<table border=1 width=220> <tr>";
+							for($x=0; $x<$spt ;$x++)
+								echo "<td width=80 height = 30> ".$seathold[$m][$LOC][$x]." <br></td>";
+
+							echo "</tr></table>";
+
+							echo "</td>";
+						}
+
+						echo "</tr>";
+					}
+					echo "</table><br><br></center>";
+				}
+
+
 fclose($rooms);
 }
 			$roomdata= "rooms.txt";
