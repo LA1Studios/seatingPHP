@@ -1,5 +1,4 @@
 <?php
-		echo "Hi";
 		class SimpleClass
 		{
 			public $rdetsfull= 'COLLEGE';
@@ -128,7 +127,6 @@ $mini=0;
 				$flagForSearch = 0;
 				      //SEARCH PART
 				      $searchkey = $_REQUEST['srno'];
-							echo "Search Key =".$searchkey."<br>";
 				for($m=0;$m<count($aaa);$m++)
 				{
 					$LOC=0;
@@ -141,7 +139,6 @@ $mini=0;
 							{
 								if($searchkey == $seathold[$m][$LOC][$x])
 	                {
-	                  echo "Found";
 										echo $aaa[$m]->rname()."-".$aaa[$m]->rrowd()."-".$aaa[$m]->rcold()."-".$i."-".$j."-".$x;
 	                  $flagForSearch++;
 	                }
@@ -175,5 +172,4 @@ fclose($rooms);
 }
 			$roomdata= "rooms.txt";
 			@roomdetails($roomdata); // NOTICE [errors] HANDLED WITH @ SYMBOL
-			    echo "Search Search"
 		?>
