@@ -146,6 +146,8 @@ $flagForSearch = 0;
 
 				}
 			}
+			if($flagForSearch==0)
+				echo "NOT FOUND";
 
 
 fclose($rooms);
